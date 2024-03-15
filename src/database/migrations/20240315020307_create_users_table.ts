@@ -2,10 +2,10 @@ import type { Knex, TableBuilder } from "knex";
 
 export async function up(knex: Knex): Promise<void> {
   return knex.schema.createTableIfNotExists("users", (tableBuilder) => {
-    tableBuilder.increments("id").primary();
-    tableBuilder.string("name");
-    tableBuilder.string("email");
-    tableBuilder.string("password");
+    tableBuilder.increments("id").notNullable().primary();
+    tableBuilder.string("name").notNullable();
+    tableBuilder.string("email").notNullable();
+    tableBuilder.string("password").notNullable();
   });
 }
 
