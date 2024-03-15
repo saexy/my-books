@@ -24,11 +24,11 @@ const development: Knex.Config = {
 const production: Knex.Config = {
   client: "pg",
   connection: {
-    host: "localhost2",
-    port: 5432,
-    database: "my_books",
-    user: "postgres",
-    password: "root",
+    host: process.env.DB_HOST,
+    port: Number(process.env.DB_PORT),
+    database: process.env.DB_DATABASE,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
   },
   migrations: {
     directory: "../database/migrations",
