@@ -1,10 +1,11 @@
 import { Controller, Get, Response } from "@decorators/express";
 import { Response as ResponseType } from "express";
+import { AuthMiddleware } from "../auth/auth.middleware";
 
-@Controller("/users")
+@Controller("/user", [AuthMiddleware])
 export class UserController {
   @Get("/")
-  getAll(@Response() res: ResponseType) {
-    return res.status(200).json([{ id: 1 }]);
+  get(@Response() res: ResponseType) {
+    return res.status(200).json(res.locals.user);
   }
 }
