@@ -1,11 +1,11 @@
 import { database } from "../database";
 
-export abstract class Model {
-  tableName() {
+export class Model {
+  static tableName() {
     return "model";
   }
 
-  query() {
+  static query() {
     return database(this.tableName());
   }
 }
